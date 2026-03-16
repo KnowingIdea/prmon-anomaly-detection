@@ -1,11 +1,14 @@
+# Utility to plot memory usage from txt data output file
+
 import pandas as pd
 import matplotlib.pyplot as plt # type: ignore
 
+# Read data
 df = pd.read_csv('anomaly_data.txt', delim_whitespace=True)
-
 df['pss_mb'] = df['pss'] / 1024
 df['vmem_mb'] = df['vmem'] / 1024
 
+# Plot figure
 plt.figure(figsize=(10, 6))
 
 plt.plot(df['wtime'], df['pss_mb'], label = 'PSS', color = 'blue')
